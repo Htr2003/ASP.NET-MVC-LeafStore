@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+<head>
+    <style>
+        #titleRegister {
+            margin-left: 36%;
+            font-weight: 500;
+        }
+        #inputRegister {
+            width: 30%;
+            margin-left: 35%;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<div style="margin: 10px auto;width:70%;">
+    <h2 style="text-align: center; padding-top: 30px; font-size: 30px;">ĐĂNG KÍ THÀNH VIÊN</h2>
+    @using (Html.BeginForm("Register", "Users"))
+    {
+        @Html.ValidationSummary(true)
+        <div class="mb-3 mt-3">
+            <label  id="titleRegister" for="name" class="form-label">Họ và tên:</label>
+            <input  type="text" class="form-control" id="inputRegister" name="NameCus" required>
+        </div>
+
+        <div class="mb-3 mt-3">
+            <label id="titleRegister" for="phone" class="form-label">Số điện thoại:</label>
+            <input type="text" class="form-control" id="inputRegister" name="PhoneCus" required>
+        </div>
+        <div class="mb-3 mt-3">
+            <label  id="titleRegister" for="email" class="form-label">Email:</label>
+            <input type="email" class="form-control" id="inputRegister" name="EmailCus" required>
+        </div>
+
+        <div  class="mb-3">
+            <label id="titleRegister"  for="act" class="form-label">Tên đăng nhập:</label>
+            <input  type="text" class="form-control" id="inputRegister" name="AccountCus" required>
+        </div>
+        <div class="mb-3">
+            <label id="titleRegister" for="pwd" class="form-label">Mật khẩu:</label>
+            <input type="password" class="form-control" id="inputRegister" name="PasswordCus" required>
+        </div>
+
+        <button style=" margin-left: 44% ;width:12%" type="submit" class="btn btn-primary">XÁC NHẬN</button>
+    }
+
+</div>

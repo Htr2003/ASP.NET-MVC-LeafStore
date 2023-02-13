@@ -1,0 +1,44 @@
+﻿@model IEnumerable<LeafStore.Models.Category>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<body>
+    <br />
+    <h2 style="text-align:center;">THÔNG TIN THỂ LOẠI</h2>
+    <p>
+        @Html.ActionLink("Tạo mới Thể loại", "Create", null, new {@class = "btn btn-info" })
+    </p>
+    <table class="table table-hover">
+        <tr>
+            <th>
+               <b>MÃ THỂ LOẠI</b>
+            </th>
+            <th>
+                <b>TÊN THẺ LOẠI</b>
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IDCate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameCate)
+                </td>
+                <td>
+                    @Html.ActionLink("Chỉnh sửa ", "Edit", new { id = item.Id }, new {@class="btn btn-warning"}) |
+                    @Html.ActionLink("Chi tiết ", "Details", new { id = item.Id }, new { @class = "btn btn-success" }) |
+                    @Html.ActionLink("Xóa ", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+

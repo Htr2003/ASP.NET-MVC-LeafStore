@@ -1,0 +1,59 @@
+﻿@using LeafStore.Models
+@model List<CartItem>
+@{
+    ViewBag.Title = "ConfirmCart";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+    Customer customer = Session["TaiKhoan"] as Customer;
+}
+<div style="margin: 10px auto; width: 90%;">
+    <h2 style="text-align:center;padding-top:50px;">Thông tin đơn hàng</h2>
+    <table  class="table table-bordered">
+        <thead>
+            <tr>
+                <th>MÃ SẢN PHẨM</th>
+                <th>TÊN SẢN PHẨM</th>
+                <th>ẢNH</th>
+                <th>SỐ LƯỢNG</th>
+                <th>ĐƠN GIÁ</th>
+                <th>THÀNH TIỀN</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>@product.ProductID</td>
+                    <td>@product.NamePro</td>
+                    <td><img src="~/Image/@product.ImagePro" style="max-height:200px" /></td>
+                    <td>@product.Number</td>
+                    <td>@String.Format("{0:c0}", product.Price)</td>
+                    <td>@String.Format("{0:c0}", product.FinalPrice())</td>
+                </tr>
+            }
+            <tr style="font-weight:bold; text-align:right; color:red;">
+                <td colspan="4">Tổng số lượng: @ViewBag.TotalNumber</td>
+                <td colspan="5">Tổng tiền: @String.Format("{0:c0}", ViewBag.TotalPrice) </td>
+            </tr>
+        </tbody>
+    </table>
+    <h2 style="text-align:center">Thông tin khách hàng</h2>
+    <table style="width:30%;" class="table table-bordered container">
+        <tr>
+            <td>Tên khách hàng: </td>
+            <td>@customer.NameCus</td>
+        </tr>
+        <tr>
+            <td>số điện thoại: </td>
+            <td>@customer.PhoneCus</td>
+        </tr>
+        <tr>
+            <td>ngày đặt: </td>
+            <td>@DateTime.Now.ToShortDateString()</td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: center;">
+                @Html.ActionLink("Đồng ý", "AgreeCart", null, new { @class = "btn btn-primary" })
+            </td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/themify-icons/themify-icons.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+    <link href="~/Content/Home.css" rel="stylesheet" />
+    <link href="~/Icon/themify-icons.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+
+        <div class="bs_header ">
+            <div style="padding-top:5px;" class="site-identity">
+                <a href="~/Home/Index"> <img src="~/Image/LogoLeaf.png" alt="Alternate Text" /></a>
+
+            </div>
+            <div class="bs_search container col-4">
+                @using (Html.BeginForm("AllProducts", "Home"))
+                {
+                    <div class="input-group" style="width:600px;padding:6px 0 0 0">
+                        <span class="col-8">@Html.TextBox("searchString", "", new { @class = "form-control container-sm" })</span>
+                        <input style=" border-radius: 20px; width: 10%;" type="submit" name="Submit" class="btn btn-primary container col-3" value="Tìm" />
+                    </div>
+                }
+
+            </div>
+
+            <nav class="navigation">
+                <ul class="nav nav-pills">
+                    <li>
+                        @Html.Action("CartPartial", "Cart")
+                    </li>
+                    @if (Session["NameCus"] == null)
+                    {
+                        <li class="nav-link dropdown ">
+                            <a class="nav-link dropdown-toggle link-dark" data-bs-toggle="dropdown" href="~/Users/Login">Tài khoản</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="~/Users/Login">Đăng nhập</a></li>
+                                <li><a class="dropdown-item" href="~/Users/Register">Đăng kí</a></li>
+                            </ul>
+                        </li>
+
+                    }
+                    else
+                    {
+                        <li class="nav-link dropdown ">
+                            <span class="nav-link dropdown-toggle link-dark " data-bs-toggle="dropdown">@Session["NameCus"]</span>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="@Url.Action("Detail", "Users", new { idCus = Session["IDCus"]})">Thông tin tài khoản</a></li>
+                                <li><a class="dropdown-item" href="~/Users/Logout">Đăng xuất</a></li>
+                            </ul>
+                        </li>
+
+                    }
+                </ul>
+            </nav>
+        </div>
+        <div style="padding:30px 0 0 0 ; width:20%; float:left">
+            @Html.Action("GetProductsByCategory", "Home")
+        </div>
+        <div style=" width:80%;float:right" class="bs_content">
+            @RenderBody()
+        </div>
+        <div class="bs_footer" style="padding: 0 10% 0 10%">
+            <table class="table table-borderless">
+                <tr>
+                    <th>
+                        <b>Hỗ trợ khách hàng</b>
+                    </th>
+                    <td>
+                        <b>Giới thiệu</b>
+                    </td>
+                    <td>
+                        <b>Tài khoản</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Email: nguyenkhangxxx@gmail.com</td>
+                    <td>Thông tin về LeafStore</td>
+                    <td><a href="~/Users/Login">Đăng nhập</a></>
+                </tr>
+                <tr>
+                    <td>Địa chỉ: xx/xx Trình Đình Trọng, phường Phú Trung, quận Tân Phú, tp HCM </td>
+                    <td>Tuyển dụng</td>
+                    <td><a href="~/Users/Register">Đăng kí</a></td>
+                </tr>
+                <tr>
+                    <td>Hotline: 09095678</td>
+                </tr>
+                <tr></tr>
+            </table>
+
+        </div>
+    </div>
+    <h6 style="text-align:center">Copyright © 2022. Bản quyền website LeafStore</h6>
+</body>
+</html>

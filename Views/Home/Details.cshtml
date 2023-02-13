@@ -1,0 +1,32 @@
+﻿@model LeafStore.Models.Product
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+<div>
+
+
+    <div class="row" style="padding:30px 10% 5% 10%;">
+        <hr />
+        <div class="col-md-4">
+            <img src="~/Image/@Model.ImagePro" alt="Minh họa" style="width:100%" />
+        </div>
+        <div class="col-md-6">
+            <h4>Tên sản phẩm: @Model.NamePro</h4>
+
+            <p class="price">
+                Giá bán: <span style="color:red;font-size:24px;">@String.Format("{0:c0}", Model.Price)</span>
+            </p>
+            <a class="btn btn-danger" href="@Url.Action("AddToCart","Cart", new {id=Model.ProductID})">Thêm vào giỏ hàng</a>
+        </div>
+        <div style="height:50px;width:100%">
+
+        </div>
+        <div>
+            <p style="text-align:justify">
+                <span style="font-weight:bold;">Mô tả: </span>@Model.DecriptionPro
+            </p>
+        </div>
+    </div>
+</div>
+

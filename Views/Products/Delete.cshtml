@@ -1,0 +1,63 @@
+﻿@model LeafStore.Models.Product
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div>
+    <br />
+    <h2 style="text-align:center">Xóa sản phẩm</h2>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên sản phẩm
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NamePro)
+        </dd>
+
+        <dt>
+            Mô tả
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DecriptionPro)
+        </dd>
+
+        <dt>
+            Giá
+        </dt>
+
+        <dd>
+            @String.Format("{0:c0}", Model.Price)
+        </dd>
+
+        <dt>
+            Ảnh minh họa
+        </dt>
+
+        <dd>
+            <img style="max-height: 392px;"src="~/Image/@Model.ImagePro" alt="sản phẩm" />
+        </dd>
+
+        <dt>
+            Thể loại
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category1.NameCate)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <p>Bạn có chắc muốn xóa sản phẩm ?</p>
+            <input type="submit" value="Xóa" class="btn btn-danger" /> |
+            @Html.ActionLink("Trở về", "Index")
+        </div>
+    }
+</div>

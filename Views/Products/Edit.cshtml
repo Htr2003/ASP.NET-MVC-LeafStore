@@ -1,0 +1,68 @@
+﻿@model LeafStore.Models.Product
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@using (Html.BeginForm("Edit", "Products", FormMethod.Post, new {@enctype = "multipart/form-data"}))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <br />
+        <h2 style="text-align:center">Chỉnh sửa sản phẩm</h2>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ProductID)
+
+        <div class="form-group">
+            Tên sản phẩm
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NamePro, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NamePro, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            Mô tả
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DecriptionPro, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DecriptionPro, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            Thể loại
+            <div class="col-md-10">
+                @Html.DropDownList("Category", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            Giá
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            Ảnh minh họa
+            <div class="col-md-10">
+                <input type="file" name="ImagePro" style="padding-bottom: 20px;" />
+                <img  style="max-height: 392px;"src="~/Image/@Model.ImagePro" alt="sản phẩm"/> (Ảnh hiện tại)
+                @Html.ValidationMessageFor(model => model.ImagePro,"", new { @class = "text-danger" })
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <br />
+                <input type="submit" value="Lưu" class="btn btn-success" />
+                @Html.ActionLink("Trở về", "Index",null, new { @class = "btn btn-light" })
+            </div>
+        </div>
+    </div>
+}

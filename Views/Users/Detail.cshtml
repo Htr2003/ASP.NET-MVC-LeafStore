@@ -1,0 +1,41 @@
+﻿@model LeafStore.Models.Customer
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+<br />
+<h3 style="text-align:center">Thông tin tài khoản</h3>
+<div style="float:left;padding-left:35%;height:300px">
+
+
+    <dl>
+        <dt>
+            Tên
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameCus)
+        </dd>
+
+        <dt>
+            Số điện thoại
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneCus)
+        </dd>
+
+        <dt>
+            Email
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailCus)
+        </dd>
+
+    </dl>
+</div>
+<p>
+
+</p>

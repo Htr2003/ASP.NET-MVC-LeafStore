@@ -1,0 +1,9 @@
+﻿@model IEnumerable<LeafStore.Models.Category>
+<div style="padding:10px ">
+    <ul class="list-group">
+        @foreach(var item in Model)
+         {
+            @Html.ActionLink(item.NameCate,"GetProductsByCateID","Home",new {id=item.Id},new { @class = "list-group-item list-group-item-action list-group-item-secondary" })
+         }
+    </ul>
+</div>

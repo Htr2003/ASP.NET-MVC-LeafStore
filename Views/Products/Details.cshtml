@@ -1,0 +1,58 @@
+﻿@model LeafStore.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div>
+    <br />
+    <h2 style="text-align:center">Chi tiết sản phẩm</h2>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên sản phẩm
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NamePro)
+        </dd>
+
+        <dt>
+            Mô tả
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DecriptionPro)
+        </dd>
+
+        <dt>
+            Giá
+        </dt>
+
+        <dd>
+            @String.Format("{0:c0}",Model.Price)
+     
+        </dd>
+
+        <dt>
+            Ảnh minh họa
+        </dt>
+
+        <dd>
+            <img style="max-height: 392px;" src="~/Image/@Model.ImagePro" alt="sản phẩm" />
+        </dd>
+
+        <dt>
+            Thể loại
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category1.NameCate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.ProductID },new {@class="btn btn-warning"}) |
+    @Html.ActionLink("Trở về", "Index","", new { @class = "btn btn-light" })
+</p>

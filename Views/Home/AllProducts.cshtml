@@ -1,0 +1,32 @@
+﻿@model IEnumerable<LeafStore.Models.Product>
+
+@{
+    ViewBag.Title = "AllProducts";
+    Layout = "~/Views/Shared/_AllProductsLayout.cshtml";
+}
+
+
+<div class="body-page" style="margin: 10px auto;padding:50px 0 0 0; width: 95%;">
+    <div class="row">
+        <span><a href="~/Home/Index">Trang chủ</a> > <a href="~/Home/AllProducts">Tất cả sản phẩm</a></span>
+        @foreach (var sanpham in Model)
+        {
+            <div class="col-xxl-2 col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 prod-item" style="padding:5px">
+                <div class="card" >
+                    <a class="card-img-top" href="@Url.Action("Details", new { id = sanpham.ProductID })">
+                        <img class="card-img-top " src="~/Image/@sanpham.ImagePro" width="150" height="250">
+                    </a>
+                    <div class="card-body" style="text-align: center">
+                        <a href="@Url.Action("Details", new { id = sanpham.ProductID })" )>
+                            <div style="height:70px"><h6 class="card-title text">@sanpham.NamePro</h6></div>
+                        </a>
+                        <p class="card-text">@String.Format("{0:c0}", sanpham.Price)</p>
+                        <a class="btn btn-danger" href="@Url.Action("AddToCart","Cart", new {id=sanpham.ProductID})">Thêm vào giỏ hàng</a>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+        </div>
+    </div>

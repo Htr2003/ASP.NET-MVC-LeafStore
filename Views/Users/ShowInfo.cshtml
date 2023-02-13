@@ -1,0 +1,59 @@
+﻿@model LeafStore.Models.Customer
+
+@{
+    ViewBag.Title = "ShowInfo";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div>
+    <h2 style="text-align:center">Thông tin khách hàng</h2>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NameCus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameCus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneCus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneCus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailCus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailCus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountCus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountCus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PasswordCus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PasswordCus)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Chỉnh sửa","Edit","Users")
+    @Html.ActionLink("Back to List", "Index", "Home")
+</p>
