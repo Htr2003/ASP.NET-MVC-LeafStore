@@ -69,13 +69,14 @@ namespace LeafStore.Controllers
                     ModelState.AddModelError(string.Empty, "Tên đăng nhập không được để trống");
                 if (string.IsNullOrEmpty(acc.PasswordCus))
                     ModelState.AddModelError(string.Empty, "Mật khẩu không được để trống");
+                    
                 var checkAdmin = database.AdminUsers.FirstOrDefault(s => s.NameUser == acc.AccountCus && s.PasswordUser == acc.PasswordCus);
                 if (checkAdmin != null)
                 {
                     Session["AdminName"] = checkAdmin.NameUser;
                     return RedirectToAction("Index", "Admin");
                 }
-
+                
                 var check = database.Customers.Where(s => s.AccountCus.Equals(acc.AccountCus) && s.PasswordCus.Equals(acc.PasswordCus)).FirstOrDefault();
                 if (check != null)
                 {
